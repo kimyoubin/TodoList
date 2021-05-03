@@ -1,8 +1,11 @@
 <template>
-    <div>
-        <todo-checkbox></todo-checkbox>
+    <li>
+        <TodoCheckbox
+            name="check"
+            id="check"
+        />
         listItem
-    </div>
+    </li>
 </template>
 
 <script>

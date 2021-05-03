@@ -1,6 +1,8 @@
 <template>
 	<base-layout>
-        <todo-list></todo-list>
+        <todo-list
+            :items="todoList"
+        ></todo-list>
     </base-layout>
 </template>
 
@@ -13,6 +15,11 @@ export default {
     components: {
         BaseLayout,
         TodoList
+    },
+    computed: {
+        todoList() {
+            return this.$store.getters['Todo/todoList']
+        }
     }
 }
 </script>

@@ -1,7 +1,7 @@
 export default {
     namespaced: true,
     state: {
-        TodoList: [
+        list: [
             {
                 title: 'title1',
             },
@@ -11,7 +11,9 @@ export default {
         ]
     },
     getters: {
-
+        todoList(state) {
+            return state.list
+        }
     },
     mutations: {
         todoAdd() {

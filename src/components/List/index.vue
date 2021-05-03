@@ -1,14 +1,26 @@
 <template>
-    <div>
-        <todo-list-item></todo-list-item>
-    </div>
+    <ul>
+        <TodoListItem 
+            v-for="(item, key) in items"
+            :key="key"/>
+    </ul>
 </template>
 
 <script>
 import TodoListItem from '@/components/List/TodoListItem.vue'
 export default {
+    name: 'TodoList',
     components: { TodoListItem },
+    props: {
+        items: {
+            type: Array,
+        },
+    },
+    data() {
+        return {
 
+        }
+    }
 }
 </script>
 

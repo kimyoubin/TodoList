@@ -6,7 +6,7 @@
             :id="id"
             :checked="value"
             @input="change">
-        <label :for="id"><slot></slot></label>
+        <label :for="id">{{ label }}</label>
     </div>
 </template>
 
@@ -14,31 +14,14 @@
 export default {
 	name: 'TodoCheckbox',
 	props: {
-        name: {
-            type: String,
-            default: ''
-        },
-        id: {
-            type: String,
-            default: ''
-        },
-        value: {
-            type: String,
-            default: ''
-        },
-        for: {
-            type: String,
-            derault: ''
-        }
+
 	},
 	data() {
 		return {
 		}
 	},
 	methods: {
-		change: function($event) {
-			this.$emit('input', $event.target.value)
-		}
+
 	}
 }
 </script>
