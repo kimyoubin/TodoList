@@ -4,6 +4,8 @@
   </div>
 </template>
 
-<style lang="scss">
-
+<style lang="scss" scoped>
+#app {
+  background: rgba(0,0,0,.5)
+}
 </style>

@@ -16,13 +16,13 @@ export default {
         }
     },
     mutations: {
-        todoAdd() {
-            
+        todoAdd(state, todo) {
+            state.list.push(todo)
         }
     },
     actions: {
-        todoAdd({ commit }) {
-            commit('todoAdd')
+        todoAdd({ commit }, todo) {
+            commit('todoAdd', todo)
         }
     }
 }

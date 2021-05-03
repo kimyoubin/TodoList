@@ -1,10 +1,10 @@
 <template>
     <li>
         <TodoCheckbox
-            name="check"
-            id="check"
+            :name="check"
+            :id="check"
+            :label="item.title"
         />
-        listItem
     </li>
 </template>
 
@@ -14,6 +14,12 @@ import TodoCheckbox from '@/components/Form/TodoCheckbox.vue'
 export default {    
     name: 'TodoListItem',
     components: { TodoCheckbox },
+    props: {
+        item: {
+            type: Object,
+            require: true
+        }
+    }
 }
 </script>
 

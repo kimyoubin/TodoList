@@ -4,8 +4,7 @@
             type="checkbox"
             :name="name"
             :id="id"
-            :checked="value"
-            @input="change">
+            :checked="value">
         <label :for="id">{{ label }}</label>
     </div>
 </template>
@@ -14,7 +13,9 @@
 export default {
 	name: 'TodoCheckbox',
 	props: {
-
+        label: {
+            type: String
+        }
 	},
 	data() {
 		return {

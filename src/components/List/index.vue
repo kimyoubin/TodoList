@@ -2,7 +2,8 @@
     <ul>
         <TodoListItem 
             v-for="(item, key) in items"
-            :key="key"/>
+            :key="key"
+            :item="item"/>
     </ul>
 </template>
 

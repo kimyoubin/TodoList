@@ -44,7 +44,7 @@ export default {
 <style lang="scss" scoped>
 input {
 	width: 100%;
-	height: 50px;
+	height: 100%;
 	padding: 10px;
 	font-size: 14px;
 	color: #333;
