@@ -1,6 +1,8 @@
 <template>
     <footer>
-        footer
+        <div class="wrap">
+            footer area footer area footer area footer area footer area footer area footer area footer area footer area footer area footer area
+        </div>
     </footer>
 </template>
 
@@ -12,7 +14,12 @@ export default {
 
 <style lang="scss" scoped>
 footer {
-    background-color: #f3f3f3;
-    padding: 80px 0;
+    padding: 80px 30px;
+    .wrap {
+        padding: 20px 0;
+        color: rgba(255,255,255,.2);
+        font-size: 14px;
+        border-top: 1px solid rgba(255,255,255,.2);
+    }
 }
 </style>

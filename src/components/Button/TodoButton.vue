@@ -28,7 +28,8 @@ export default {
   width: 30px;
   height: 30px;
   border-radius: 50%;
-  background-color: #fff;
+  background: #fff;
+  box-shadow: 0 0px 10px rgba(0,0,0,.3);
   transition: all 0.3s ease-out;
 
   img {

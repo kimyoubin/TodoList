@@ -2,11 +2,9 @@
 	<input 				
 		:type="type"
 		:placeholder="placeholder"
-		:value="value"
-		@click="isActive = true"
-		@blur="isActive = false"
+		:value="value"		
 		@input="change" 
-		:class="{ 'on' : isActive }">
+		>
 </template>
 
 <script>
@@ -45,13 +43,15 @@ export default {
 input {
 	width: 100%;
 	height: 100%;
-	padding: 10px;
+	padding: 10px 20px;
 	font-size: 14px;
 	color: #333;
-	background-color: #fff;
+	border: 2px solid #fff;
+	border-radius: 25px;
+	transition: all .4s;
 	&.on {
-		border: 1px solid rgb(228, 228, 228);
 		box-shadow: 0 10px 10px rgba(0,0,0,.05);
+		background-color: #fff;
 	}
 }
 

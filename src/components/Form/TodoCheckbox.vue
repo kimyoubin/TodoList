@@ -4,7 +4,8 @@
             type="checkbox"
             :name="name"
             :id="id"
-            :checked="value">
+            :value="value"
+            @input="change">
         <label :for="id">{{ label }}</label>
     </div>
 </template>
@@ -13,8 +14,21 @@
 export default {
 	name: 'TodoCheckbox',
 	props: {
+        name: {
+            type: String,
+            default: ''
+        },
+        id: {
+            type: String,
+            default: ''
+        },
+        value: {
+            type: Boolean,
+            false: ''
+        },
         label: {
-            type: String
+            type: String,
+            default: ''
         }
 	},
 	data() {
@@ -22,7 +36,9 @@ export default {
 		}
 	},
 	methods: {
-
+        change($event) {
+            this.$emit('input', $event.target.checked)
+        }
 	}
 }
 </script>
@@ -33,12 +49,13 @@ export default {
         display: none;
         &:checked {
             +label {
+                    text-decoration: line-through;
                     &:before {
-                    left: 4px;
+                    left: 5px;
                     top: 1px;
-                    width: 14px;
-                    height: 9px;
-                    border: 3px solid #fe4247;
+                    width: 10px;
+                    height: 7px;
+                    border: 2px solid #fff;
                     border-top: 0;
                     border-right: 0;
                     transform: rotate(-45deg);
@@ -50,7 +67,7 @@ export default {
             position: relative;
             display: block;
             padding-left: 30px;
-            color: #333;
+            color: #fff;
             text-align: left;
             font-size: 14px;
             &:before,
@@ -64,10 +81,9 @@ export default {
                 top: 0;
                 bottom: 0;
                 left: 0;
-                width: 22px;
-                height: 22px;
-                background-color: #fff;
-                border: 1px solid #d1d1d1;
+                width: 20px;
+                height: 20px;
+                border: 2px solid #d4d4d4
             }
         }
     }

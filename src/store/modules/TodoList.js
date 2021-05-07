@@ -2,12 +2,10 @@ export default {
     namespaced: true,
     state: {
         list: [
-            {
-                title: 'title1',
-            },
-            {
-                title: 'title2'
-            }
+            // {
+            //     title: 'title1',
+            //     complete: false,
+            // },
         ]
     },
     getters: {

@@ -1,9 +1,10 @@
 <template>
     <li>
         <TodoCheckbox
-            :name="check"
-            :id="check"
+            name="check"
+            id="check"
             :label="item.title"
+            v-model="item.complete"
         />
     </li>
 </template>
@@ -23,6 +24,8 @@ export default {
 }
 </script>
 
-<style>
-
+<style lang="scss" scoped>
+li {
+    margin-bottom: 25px;
+}
 </style>
