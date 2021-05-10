@@ -1,20 +1,27 @@
 <template>
 	<base-layout>
         <div class="wrap">
-            <ul class="todo-count">
+            <ul class="count-area">
                 <li class="complete">{{ todoListComplete }}</li>
                 <li class="all">{{ todoListAll }}</li>
             </ul>
-
-            <div class="todo-add">
+        
+            <div class="add-area">
                 <todo-input
                     v-model="text"
                     placeholder="please enter here"
                 ></todo-input>
                 <todo-button
+                    btnType="btn-add"
                     @click.native="todoAdd">
                     <img src="@/assets/images/btn_go.png" alt="">
                 </todo-button>
+            </div>
+
+            <div class="filter-area">
+                <todo-select></todo-select>
+                <todo-button
+                    btnType="btn-clear">All Clear</todo-button>
             </div>
 
             <div class="list-area">
@@ -32,6 +39,7 @@ import BaseLayout from "@/layouts/index.vue";
 import TodoList from "@/components/List/index.vue";
 import TodoInput from '@/components/Form/TodoInput.vue';
 import TodoButton from '@/components/Button/TodoButton.vue';
+import TodoSelect from '@/components/Form/TodoSelect.vue';
 
 export default {
     name: 'Todo',
@@ -39,7 +47,8 @@ export default {
         BaseLayout,
         TodoList,
         TodoInput,
-        TodoButton
+        TodoButton,
+        TodoSelect
     },
     data() {
         return {
@@ -86,7 +95,7 @@ export default {
     padding: 0 30px;
 }
 
-.todo-count {
+.count-area {
     display: flex;
     align-items: baseline;
     margin-bottom: 40px;
@@ -110,10 +119,11 @@ export default {
     }
 }
 
-.todo-add {
+.add-area {
     position: relative;
     width: 100%;
     height: 50px;
+    margin-bottom: 20px;
     input {
         position: absolute;
         width: 100%;
@@ -127,10 +137,15 @@ export default {
     }
 }
 
+.filter-area {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
 .list-area {
     width: 100%;
     min-height: 300px;
-    margin-top: 20px;
     padding: 40px 30px;
     background-color: rgba(255,255,255,.1);
     border-radius: 25px;
