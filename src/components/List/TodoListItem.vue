@@ -1,25 +1,26 @@
 <template>
     <li>
-        <TodoCheckbox
-            name="check"
-            id="check"
-            :label="item.title"
-            v-model="item.complete"
-        />
+        <TodoCheckButton 
+            :class="{ 'checked' : item.complete }"
+            @click.native="$emit('check', item)"/>
+        <p class="label">{{ item.title }}</p>
     </li>
 </template>
 
 <script>
-import TodoCheckbox from '@/components/Form/TodoCheckbox.vue'
+import TodoCheckButton from '@/components/Button/TodoCheckButton.vue'
 
 export default {    
     name: 'TodoListItem',
-    components: { TodoCheckbox },
+    components: { TodoCheckButton },
     props: {
         item: {
             type: Object,
             require: true
-        }
+        },
+    },
+    methods: {
+        
     }
 }
 </script>
@@ -27,5 +28,12 @@ export default {
 <style lang="scss" scoped>
 li {
     margin-bottom: 25px;
+    display: flex;
+    align-items: center;
+    .label {
+        padding-left: 5px;
+        color: #fff;
+        letter-spacing: 1px;
+    }
 }
 </style>

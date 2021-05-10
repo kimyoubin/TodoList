@@ -3,7 +3,8 @@
         <TodoListItem 
             v-for="(item, key) in items"
             :key="key"
-            :item="item"/>
+            :item="item"
+            @check="$emit('check', item)"/>
     </ul>
 </template>
 
@@ -19,8 +20,13 @@ export default {
     },
     data() {
         return {
-
+            
         }
+    },
+    methods: {
+        // todoCheck(item) {
+        //     this.
+        // }
     }
 }
 </script>

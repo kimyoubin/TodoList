@@ -18,6 +18,7 @@
             <div class="list-area">
                 <todo-list
                     :items="todoList"
+                    @check="todoCheck"
                 ></todo-list>
             </div>
         </div>        
@@ -51,9 +52,10 @@ export default {
     },
     methods: {
         todoAdd() {
-            console.log('click')
+            // todo 넘겨줄때 여기에 꼭 같이 넘겨줘야 함
             let todo = {
-                title: this.text
+                title: this.text,
+                complete: false
             }
             this.$store.dispatch('Todo/todoAdd', todo)
             if( this.text === '' ) {
@@ -61,6 +63,10 @@ export default {
             } else {
                 this.isActive = true
             }
+        },
+        todoCheck(item) {
+            this.$store.dispatch('Todo/todoCheck', item)
+            console.log('todo item', item)
         }
     }
 }
