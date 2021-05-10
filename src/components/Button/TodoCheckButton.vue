@@ -1,6 +1,5 @@
 <template>
-	<button class="checkbox">
-    </button>
+	<button class="checkbox"></button>
 </template>
 
 <script>

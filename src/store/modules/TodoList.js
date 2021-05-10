@@ -4,12 +4,15 @@ export default {
         /**
          * list: [
          *      {
-         *      title: String,
-         *      complete: Boolean
+         *          title: String,
+         *          complete: Boolean
          *      }
          * ]
          */
-        list: []
+        list: localStorage.getItem('todoList')
+            // parse는 문자열을 객체로 변환시켜준다.
+            ? JSON.parse(localStorage.getItem('todoList'))
+            : [],
     },
     getters: {
         todoList(state) {
@@ -19,6 +22,9 @@ export default {
     mutations: {
         todoAdd(state, todo) {
             state.list.push(todo)
+            // stringify는 JSON 객체를 문자열로 변환시켜줌
+            localStorage.setItem('todoList', JSON.stringify(state.list));
+            // console.log(JSON.stringify(state.list))
         },
         todoCheck(state, item) {
             let itemIndex = state.list.indexOf(item)
