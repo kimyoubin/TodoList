@@ -1,10 +1,10 @@
 <template>
-    <li>
+    <div>
         <TodoCheckButton 
             :class="{ 'checked' : item.complete }"
             @click.native="$emit('check', item)"/>
         <p class="label">{{ item.title }}</p>
-    </li>
+    </div>
 </template>
 
 <script>
@@ -26,12 +26,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-li {
+div {
     margin-bottom: 25px;
     display: flex;
     align-items: center;
     .label {
-        padding-left: 5px;
+        padding-left: 10px;
         color: #fff;
         letter-spacing: 1px;
     }

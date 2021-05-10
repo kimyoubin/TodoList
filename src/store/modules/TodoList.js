@@ -15,9 +15,19 @@ export default {
             : [],
     },
     getters: {
+        // todoList
         todoList(state) {
             return state.list
-        }
+        },
+        // todoList 전체 갯수
+        todoListAll(state) {
+            return state.list.length
+        },
+        // todoList 완료된 갯수 
+        todoListComplete(state) {
+            return state.list.filter((state) => state.complete).length
+        },        
+        
     },
     mutations: {
         todoAdd(state, todo) {
@@ -44,6 +54,6 @@ export default {
         },
         todoCheck({ commit }, item) {
             commit('todoCheck', item)
-        }
+        },
     }
 }

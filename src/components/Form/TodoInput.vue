@@ -45,10 +45,10 @@ input {
 	height: 100%;
 	padding: 10px 20px;
 	font-size: 14px;
-	color: #333;
+	color: #fff;
 	border: 2px solid #fff;
 	border-radius: 25px;
-	transition: all .4s;
+	transition: all .2s;
 	&.on {
 		box-shadow: 0 10px 10px rgba(0,0,0,.05);
 		background-color: #fff;

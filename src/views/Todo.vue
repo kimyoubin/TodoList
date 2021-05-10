@@ -1,12 +1,14 @@
 <template>
 	<base-layout>
         <div class="wrap">
+            <ul class="todo-count">
+                <li class="complete">{{ todoListComplete }}</li>
+                <li class="all">{{ todoListAll }}</li>
+            </ul>
+
             <div class="todo-add">
                 <todo-input
                     v-model="text"
-                    @click.native="isActive = true"
-                    @blur.native="isActive = false"
-                    :class="{ 'on' : isActive }"
                     placeholder="please enter here"
                 ></todo-input>
                 <todo-button
@@ -42,26 +44,32 @@ export default {
     data() {
         return {
             text: '',
-            isActive: false,
         }
     },
     computed: {
         todoList() {
             return this.$store.getters['Todo/todoList']
-        }
+        },
+        todoListAll() {
+            return this.$store.getters['Todo/todoListAll']
+        },
+        todoListComplete() {
+            return this.$store.getters['Todo/todoListComplete']
+        },       
     },
     methods: {
-        todoAdd() {
-            // todo 넘겨줄때 여기에 꼭 같이 넘겨줘야 함
-            let todo = {
-                title: this.text,
-                complete: false
-            }
-            this.$store.dispatch('Todo/todoAdd', todo)
+        todoAdd() {           
             if( this.text === '' ) {
-                this.isActive = false
-            } else {
-                this.isActive = true
+                alert('내용을 입력해주세요');
+                
+            } else {                
+                // todo 를 store에 넘겨줄때 여기에 꼭 같이 넘겨줘야 함
+                let todo = {
+                    title: this.text,
+                    complete: false
+                }
+                this.$store.dispatch('Todo/todoAdd', todo)
+                this.text = ''
             }
         },
         todoCheck(item) {
@@ -77,6 +85,31 @@ export default {
     width: 100%;
     padding: 0 30px;
 }
+
+.todo-count {
+    display: flex;
+    align-items: baseline;
+    margin-bottom: 40px;
+    color: #fff;
+    .complete {
+        position: relative;
+        padding-right: 25px;
+        margin-right: 5px;
+        font-size: 60px;
+        &::after {
+            content: '/';
+            display: block;
+            position: absolute;
+            right: 0;
+            bottom: 3px;
+            font-size: 50px;
+        }
+    }
+    .all {
+        font-size: 30px;
+    }
+}
+
 .todo-add {
     position: relative;
     width: 100%;
@@ -84,10 +117,6 @@ export default {
     input {
         position: absolute;
         width: 100%;
-        &.on {
-            box-shadow: 0 10px 10px rgba(0,0,0,.05);
-            background-color: #fff;
-        }
     }
     button {
         position: absolute;

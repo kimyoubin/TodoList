@@ -1,7 +1,7 @@
 <template>
     <footer>
         <div class="wrap">
-            footer area footer area footer area footer area footer area footer area footer area footer area footer area footer area footer area
+            made by youbin
         </div>
     </footer>
 </template>
@@ -19,6 +19,7 @@ footer {
         padding: 20px 0;
         color: rgba(255,255,255,.2);
         font-size: 14px;
+        text-align: right;
         border-top: 1px solid rgba(255,255,255,.2);
     }
 }

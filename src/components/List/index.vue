@@ -1,11 +1,16 @@
 <template>
-    <ul>
-        <TodoListItem 
-            v-for="(item, key) in items"
-            :key="key"
-            :item="item"
-            @check="$emit('check', item)"/>
-    </ul>
+    <div>
+        <div v-if="items.length > 0">
+            <TodoListItem 
+                v-for="(item, key) in items"
+                :key="key"
+                :item="item"
+                @check="$emit('check', item)"/>
+        </div>
+        <div 
+            class="no-list"
+            v-else>no list ,, :(</div>
+    </div>
 </template>
 
 <script>
@@ -24,13 +29,13 @@ export default {
         }
     },
     methods: {
-        // todoCheck(item) {
-        //     this.
-        // }
     }
 }
 </script>
 
-<style>
-
+<style lang="scss" scoped>
+.no-list {
+    font-size: 14px;
+    color: rgba(255,255,255,.7);
+}
 </style>
