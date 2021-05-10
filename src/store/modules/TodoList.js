@@ -26,8 +26,7 @@ export default {
         // todoList 완료된 갯수 
         todoListComplete(state) {
             return state.list.filter((state) => state.complete).length
-        },        
-        
+        },                
     },
     mutations: {
         todoAdd(state, todo) {
