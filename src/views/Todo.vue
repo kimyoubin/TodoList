@@ -9,6 +9,7 @@
             <div class="add-area">
                 <todo-input
                     v-model="text"
+                    @keyup.native.enter="todoAdd"
                     placeholder="please enter here"
                 ></todo-input>
                 <todo-button
