@@ -2,7 +2,6 @@
 	<input 				
 		:type="type"
 		:placeholder="placeholder"
-		:value="value"		
 		@input="change" 
 		>
 </template>
@@ -16,10 +15,6 @@ export default {
 			default: ''
 		},	
 		placeholder: {
-			type: String,
-			default: ''
-		},	
-		value: {
 			type: String,
 			default: ''
 		},	

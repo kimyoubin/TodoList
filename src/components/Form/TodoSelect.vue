@@ -1,7 +1,7 @@
 <template>
     <select name="" id="">
-        <option value="">latest</option>
-        <option value="">oldest</option>
+        <option value="">Latest</option>
+        <option value="">Oldest</option>
     </select>
 </template>
 

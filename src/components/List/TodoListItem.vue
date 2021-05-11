@@ -1,9 +1,15 @@
 <template>
-    <div>
-        <TodoCheckButton 
-            :class="{ 'checked' : item.complete }"
-            @click.native="$emit('check', item)"/>
-        <p class="label">{{ item.title }}</p>
+    <div class="list-item">
+        <div class="left-area">
+            <TodoCheckButton 
+                :class="{ 'checked' : item.complete }"
+                @click.native="$emit('check', item)"/>
+            <p class="label">{{ item.title }}</p>
+        </div>
+        <div class="right-area">
+            <button class="close">close button</button>
+            <div class="date">5/11 Fri</div>
+        </div>
     </div>
 </template>
 
@@ -26,14 +32,55 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-div {
-    margin-bottom: 25px;
+.list-item {
+    position: relative;
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    .label {
-        padding-left: 10px;
-        color: #fff;
-        letter-spacing: 1px;
+    margin-bottom: 25px;
+    .left-area {        
+        display: flex;
+        align-items: center;
+        .label {
+            padding-left: 10px;
+            color: #fff;
+            letter-spacing: 1px;
+        }
+    }
+    .right-area {        
+        .close {            
+            position: relative;
+            width: 12px;
+            height: 12px;
+            top: -5px;
+            right: 0;
+            font-size: 0;
+            &::before, &::after {
+                content: '';
+                display: block;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                background-color: #fff;
+                transform: translate(-50%,-50%) rotate(45deg);
+            }
+            &::before {
+                width: 1px;
+                height: 100%;
+            }
+            &::after {
+                width: 100%;
+                height: 1px;
+            }
+        }
+        .date {
+            position: absolute;
+            right: 0;
+            top: 15px;
+            color: #fff;
+            font-size: 10px;
+            letter-spacing: 1px;
+        }
     }
 }
 </style>
