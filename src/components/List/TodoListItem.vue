@@ -7,7 +7,10 @@
             <p class="label">{{ item.title }}</p>
         </div>
         <div class="right-area">
-            <button class="close">close button</button>
+            <button 
+                @click="todoDelete(item)"
+                class="close"
+            >close button</button>
             <div class="date">5/11 Fri</div>
         </div>
     </div>
@@ -26,7 +29,9 @@ export default {
         },
     },
     methods: {
-        
+        todoDelete(item) {
+            this.$store.dispatch('Todo/todoDelete', item)
+        }
     }
 }
 </script>

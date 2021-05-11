@@ -21,7 +21,9 @@
             <div class="filter-area">
                 <todo-select></todo-select>
                 <todo-button
-                    btnType="btn-clear">All Clear</todo-button>
+                    @click.native="todoAllClear"
+                    btnType="btn-clear"
+                >All Clear</todo-button>
             </div>
 
             <div class="list-area">
@@ -84,6 +86,9 @@ export default {
         todoCheck(item) {
             this.$store.dispatch('Todo/todoCheck', item)
             console.log('todo item', item)
+        },
+        todoAllClear() {
+            this.$store.dispatch('Todo/todoAllClear')
         }
     }
 }

@@ -29,22 +29,43 @@ export default {
         },                
     },
     mutations: {
+        // todoList 추가
         todoAdd(state, todo) {
             state.list.push(todo)
             // stringify는 JSON 객체를 문자열로 변환시켜줌
-            localStorage.setItem('todoList', JSON.stringify(state.list));
-            // console.log(JSON.stringify(state.list))
+            
+            localStorage.setItem('todoList', JSON.stringify(state.list))
         },
+        // todoList 완료여부 체크
         todoCheck(state, item) {
             let itemIndex = state.list.indexOf(item)
             if (itemIndex >= 0) {
                 state.list[itemIndex].complete = !state.list[itemIndex].complete
             }
-            console.log('itemIndex', itemIndex);
+            // console.log('itemIndex', itemIndex)
             // item.complete = !item.complete
             // console.log('state item.complete ::', item.complete)
-            // console.log('state state.list ::', state.list);
-            // console.log('state state.list ::', state.list[itemIndex].complete);
+            // console.log('state state.list ::', state.list)
+            // console.log('state state.list ::', state.list[itemIndex].complete)
+
+            localStorage.setItem('todoList', JSON.stringify(state.list))                      
+        },
+        // todoList 한개 삭제
+        todoDelete(state, item) {            
+            let itemIndex = state.list.indexOf(item)
+            if (itemIndex >= 0) {
+                // console.log('클릭')
+                state.list.splice(itemIndex, 1)
+            }
+
+            localStorage.setItem('todoList', JSON.stringify(state.list))
+        },
+        // todoList 전체 삭제
+        todoAllClear(state) {
+            console.log('되니?')
+            state.list = []
+
+            localStorage.setItem('todoList', JSON.stringify(state.list))
         }
     },
     actions: {
@@ -54,5 +75,11 @@ export default {
         todoCheck({ commit }, item) {
             commit('todoCheck', item)
         },
+        todoDelete({ commit }, item) {
+            commit('todoDelete', item)
+        },
+        todoAllClear({ commit }) {
+            commit('todoAllClear')
+        }
     }
 }
