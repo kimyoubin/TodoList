@@ -4,14 +4,16 @@
             <TodoCheckButton 
                 :class="{ 'checked' : item.complete }"
                 @click.native="$emit('check', item)"/>
-            <p class="label">{{ item.title }}</p>
+            <p :class="{ 'complete' : item.complete }"
+                class="label">{{ item.title }}
+            </p>
         </div>
         <div class="right-area">
             <button 
                 @click="todoDelete(item)"
                 class="close"
             >close button</button>
-            <div class="date">5/11 Fri</div>
+            <div class="date">{{ $moment().format('YY.MM.DD ddd') }}</div>
         </div>
     </div>
 </template>
@@ -52,6 +54,10 @@ export default {
             padding-left: 10px;
             color: #fff;
             letter-spacing: 1px;
+            &.complete {
+                color: rgba(255,255,255,.5);
+                text-decoration: line-through;
+            }
         }
     }
     .right-area {        
