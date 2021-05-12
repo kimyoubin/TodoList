@@ -45,7 +45,7 @@ export default {
             // console.log('itemIndex', itemIndex)
             // item.complete = !item.complete
             // console.log('state item.complete ::', item.complete)
-            // console.log('state state.list ::', state.list)
+            // console.log('state state.list ::', state.list[0].complete)
             // console.log('state state.list ::', state.list[itemIndex].complete)
 
             localStorage.setItem('todoList', JSON.stringify(state.list))                      
@@ -62,7 +62,6 @@ export default {
         },
         // todoList 전체 삭제
         todoAllClear(state) {
-            console.log('되니?')
             state.list = []
 
             localStorage.setItem('todoList', JSON.stringify(state.list))
