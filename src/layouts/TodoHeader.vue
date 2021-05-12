@@ -2,7 +2,7 @@
     <header>
         <div class="wrap">
             <div class="date">
-                5/11 Fri
+                <div class="today">{{ $moment().format('[Today is] dddd') }}</div>
             </div>
         </div>
     </header>
