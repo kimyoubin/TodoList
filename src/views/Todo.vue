@@ -20,7 +20,11 @@
             </div>
 
             <div class="filter-area">
-                <todo-select></todo-select>
+                <todo-select
+                    v-model="selected"
+                    @change.native="changeSelect"
+                    :items="selectList"
+                ></todo-select>
                 <todo-button
                     @click.native="todoAllClear"
                     btnType="btn-clear"
@@ -33,6 +37,7 @@
                     @check="todoCheck"
                 ></todo-list>
             </div>
+            <p style="color: #fff">{{selected}}</p>
         </div>        
     </base-layout>
 </template>
@@ -56,6 +61,17 @@ export default {
     data() {
         return {
             text: '',
+            selected: '',
+            selectList: [
+                {
+                    option: 'Latest',
+                    value: '1'              
+                },
+                {
+                    option: 'Oldest',
+                    value: '2' 
+                }
+            ]
         }
     },
     computed: {
@@ -78,7 +94,8 @@ export default {
                 // todo 를 store에 넘겨줄때 여기에 꼭 같이 넘겨줘야 함
                 let todo = {
                     title: this.text,
-                    complete: false
+                    complete: false,
+                    writeDate: this.$moment().format('YY.MM.DD dddd')
                 }
                 this.$store.dispatch('Todo/todoAdd', todo)
                 this.text = ''
@@ -90,6 +107,13 @@ export default {
         },
         todoAllClear() {
             this.$store.dispatch('Todo/todoAllClear')
+        },
+        changeSelect() {
+            if( this.selected === '1' ) {
+                console.log('Latest')
+            } else {
+                console.log('Oldest')
+            }
         }
     }
 }

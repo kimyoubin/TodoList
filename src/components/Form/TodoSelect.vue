@@ -1,14 +1,32 @@
 <template>
-    <select name="" id="">
-        <option value="">Latest</option>
-        <option value="">Oldest</option>
+    <select
+        @change="changeSelect">
+        <option 
+            v-for="(item, key) of items"
+            :key="key"
+            :value="item.value"
+        >{{ item.option }}
+        </option>
     </select>
 </template>
 
 <script>
 export default {
     name: 'TodoSelect',
-
+    props: {
+        value: {
+            type: String,
+            default: ''
+        },
+        items: {
+            type: Array,
+        }
+    },
+    methods: {
+        changeSelect($event) {
+            this.$emit('input', $event.target.value)
+        }
+    }
 }
 </script>
 
